@@ -5,6 +5,23 @@ import styles from '../src/App.module.css'
 import './global.css'
 import { Sidebar } from "./components/Sidebar";
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: 'https://github.com/CarlosFariass.png',
+      name: 'Carlos Farias',
+      role: 'Front-End Developer'
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋',},
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',},
+      { type: 'link', content: 'jane.design/doctorcare'},
+    ],
+    publishedAt: new Date('2022-12-22 16:36:00')
+  },
+]
+
 
 export function App() {
 
@@ -14,14 +31,15 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post 
-            autor="Carlos Farias"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod temporibus architecto aliquam ipsam voluptatem iure veritatis ut laudantium, sequi ducimus inventore facilis. Sapiente unde id temporibus facilis rem fugit corrupti."
-          />
-          <Post 
-            autor="someone else"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod temporibus architecto aliquam ipsam voluptatem iure veritatis ut laudantium, sequi ducimus inventore facilis. Sapiente unde id temporibus facilis rem fugit corrupti."
-          />
+          {posts.map(post => {
+            return (
+              <Post 
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            )
+          })}
         </main>
       </div>
     </>
