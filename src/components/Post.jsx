@@ -40,6 +40,9 @@ export function Post ({author, publishedAt, content}) {
         setComments(newListOfCommentWithoutDeletedOne);
     }
 
+    //if textarea has no letter the btn publish will be disabled//
+    const isNewCommentEmpty = newCommentText.length === 0;
+
     return (
         <article className={styles.post}>
             <header className={styles.postHeader}>
@@ -76,10 +79,11 @@ export function Post ({author, publishedAt, content}) {
                         placeholder='Deixe um comentário'
                         onChange={handleNewCommentChange}
                         value={newCommentText}
+                        required
                     />
 
                 <footer>
-                    <button type='submit'>Publicar</button>
+                    <button type='submit' disabled={isNewCommentEmpty}>Publicar</button>
                 </footer>
             </form>
 

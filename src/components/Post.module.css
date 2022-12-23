@@ -90,10 +90,16 @@
     transition: background-color 0.1s;
 }
 
-.commentForm button[type=submit]:hover {
+.commentForm button[type=submit]:not(:disabled):hover {
     background: var(--green-300)
 
 }
+
+.commentForm button[type=submit]:disabled {
+    opacity: .7;
+    cursor: not-allowed;
+}
+
 /*css hack para deixar visivel o botão de publicar somente se qualquer elemento dentro do form estiver com focus*/
 .commentForm footer {
     visibility: hidden;
